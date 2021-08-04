@@ -22,12 +22,6 @@ jobs:
         goos: ${{ matrix.goos }}
         goarch: ${{ matrix.goarch }}
         binary_name: "azb"
-    - uses: dawidd6/action-homebrew-bump-formula@v3
-      with:
-        token: ${{secrets.TOKEN}}
-        tap: azbuilder/homebrew-cli
-        formula: azb
-        tag: ${{ github.event.release.tag_name }}
   homebrew:
     runs-on: macos-latest
     steps:
@@ -36,6 +30,6 @@ jobs:
       - name: Bump formulae
         uses: dawidd6/action-homebrew-bump-formula@master
         with:
-          token: ${{secrets.TOKEN}}
+          token: ${{secrets.GITHUB_TOKEN}}
           tap: jcanizalez/homebrew-cli
           formula: azb
