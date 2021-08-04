@@ -23,6 +23,7 @@ jobs:
         goarch: ${{ matrix.goarch }}
         binary_name: "azb"
   homebrew:
+    needs: releases-matrix
     name: Bump Homebrew formula
     runs-on: ubuntu-latest
     steps:
