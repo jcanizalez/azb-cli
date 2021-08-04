@@ -23,6 +23,7 @@ jobs:
         goarch: ${{ matrix.goarch }}
         binary_name: "azb"
   homebrew:
+    needs: releases-matrix
     runs-on: macos-latest
     steps:
       - name: Checkout repo
@@ -30,6 +31,6 @@ jobs:
       - name: Bump formulae
         uses: dawidd6/action-homebrew-bump-formula@master
         with:
-          token: ${{secrets.GITHUB_TOKEN}}
+          token: ${{secrets.TOKEN}}
           tap: jcanizalez/homebrew-cli
           formula: azb
